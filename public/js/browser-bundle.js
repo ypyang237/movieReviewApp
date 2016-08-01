@@ -62,6 +62,7 @@
 	    GetAll = __webpack_require__(223),
 	    Get = __webpack_require__(224),
 	    Add = __webpack_require__(225),
+	    Edit = __webpack_require__(227),
 	    NotFound = __webpack_require__(226);
 	
 	_reactDom2.default.render(_react2.default.createElement(
@@ -73,6 +74,7 @@
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: GetAll }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'get', component: Get }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'add', component: Add }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'edit/:id', component: Edit }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: NotFound })
 	  )
 	), document.getElementById('content'));
@@ -25969,6 +25971,98 @@
 	});
 	
 	module.exports = NotFound;
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Edit = _react2.default.createClass({
+	  displayName: "Edit",
+	
+	  getInitialState: function getInitialState() {
+	    return {
+	      id: this.props.params.id,
+	      title: "",
+	      rating: ""
+	    };
+	  },
+	  handleChange: function handleChange(field, event) {
+	    var nextState = {};
+	    nextState[field] = event.target.value;
+	
+	    this.setState(nextState);
+	  },
+	  handleSubmit: function handleSubmit() {
+	    var that = this;
+	
+	    var xmlhttp = new XMLHttpRequest();
+	    xmlhttp.addEventListener("load", function () {
+	      console.log('this', this);
+	    });
+	
+	    xmlhttp.open("PUT", "/api");
+	    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	    xmlhttp.send(JSON.stringify({
+	      id: this.state.id,
+	      name: this.state.title,
+	      rating: this.state.rating
+	    }));
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "Edit" },
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "Edit Movie Review"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "Old Title"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "Old Rating"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "New Title"
+	      ),
+	      _react2.default.createElement("input", {
+	        value: this.state.title,
+	        onChange: this.handleChange.bind(this, "title")
+	      }),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "New Rating"
+	      ),
+	      _react2.default.createElement("input", {
+	        value: this.state.rating,
+	        onChange: this.handleChange.bind(this, "rating")
+	      }),
+	      _react2.default.createElement(
+	        "button",
+	        { onClick: this.handleSubmit },
+	        "Submit"
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Edit;
 
 /***/ }
 /******/ ]);
