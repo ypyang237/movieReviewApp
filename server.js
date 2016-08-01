@@ -4,10 +4,12 @@
 const express    = require('express'),
       bodyParser = require('body-parser'),
       api        = require('./routes/api'),
-      mongoose   = require('./mongoose');
+      mongoose   = require('./mongoose'),
+      app   = express(),
+      PORT  = process.env.PORT || 3000
+      ;
 
-const app   = express(),
-      PORT  = process.env.PORT || 3000;
+mongoose();
 
 app.use(bodyParser.urlencoded({extended: true}))
   .use(bodyParser.json())

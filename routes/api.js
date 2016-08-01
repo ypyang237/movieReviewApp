@@ -1,11 +1,14 @@
 'use strict';
 
-const express = require('express'),
-      router  = express.Router();
-
+const express         = require('express'),
+      router          = express.Router(),
+      ReviewFunctions = require('../lib/reviewfunctions')
+      ;
 
 router.route('/')
   .get(function(req, res) {
+    ReviewFunctions.getAll();
+
     res.send({success: true});
   })
 
