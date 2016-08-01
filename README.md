@@ -15,7 +15,7 @@ After you have cloned the repository, please run npm install for dependencies.
 ```sh
 $ npm install 
 ```
-cd into the app, and run it with nodemon. 
+cd into the app, and run it with node or nodemon. 
 ```sh
 $ cd movieReviewApp
 $ node server.js
