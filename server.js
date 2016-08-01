@@ -4,19 +4,16 @@
 const express    = require('express'),
       bodyParser = require('body-parser'),
       api        = require('./routes/api'),
-      mongoose   = require('./mongoose'),
-      app   = express(),
-      PORT  = process.env.PORT || 3000
+      app        = express(),
+      PORT       = process.env.PORT || 3000
       ;
 
-mongoose();
-
-app.use(bodyParser.urlencoded({extended: true}))
+app
+  .use(bodyParser.urlencoded({extended: true}))
   .use(bodyParser.json())
   ;
 
 app.use('/api', api);
-app.use(express.static('public'));
 
 app.use(express.static(__dirname + "/public"));
 

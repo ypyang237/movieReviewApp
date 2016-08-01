@@ -7,9 +7,12 @@ const express         = require('express'),
 
 router.route('/')
   .get(function(req, res) {
-    ReviewFunctions.getAll();
-
-    res.send({success: true});
+    ReviewFunctions.getAll(function(reviews){
+      res.send({
+        success : true,
+        data : reviews
+      });
+    });
   })
 
   .post(function(req, res) {
