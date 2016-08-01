@@ -8,6 +8,8 @@ Built with Node.js, Express and React, this is a simple movie reviewing applicat
 - Create a new movie review
 - Delete a movie review
 
+* Data is currently stored in memory on the server, future developments will establish a mongoDB database for persisting data. 
+
 ### Installation
 
 After you have cloned the repository, please run npm install for dependencies.
@@ -79,5 +81,18 @@ GET
 > E.g. searching id = 1 will return the respective review based on index.
 
 > On the front end, this is used to allow the pre-population of the form in the [Search Reviews] component when navigated to the /edit/{id} route. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
