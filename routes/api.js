@@ -40,8 +40,6 @@ router.route('/')
         reviews  : reviews
       });
     });
-
-
   });
 
 router.route('/:query')
@@ -52,5 +50,14 @@ router.route('/:query')
       });
     });
   });
+
+router.route('/id/:id')
+.get(function(req, res){
+  ReviewFunctions.searchById(req.params.id, function(result){
+    res.send({
+      result : result
+    });
+  });
+});
 
 module.exports = router;

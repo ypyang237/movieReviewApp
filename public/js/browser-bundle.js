@@ -26011,6 +26011,23 @@
 	      rating: ""
 	    };
 	  },
+	  componentDidMount: function componentDidMount() {
+	    var that = this;
+	
+	    var getReq = new XMLHttpRequest();
+	    getReq.addEventListener("load", function () {
+	      var result = JSON.parse(this.response).result;
+	
+	      console.log('result', JSON.parse(this.response));
+	
+	      that.setState({
+	        title: result[0].name,
+	        rating: result[0].rating
+	      });
+	    });
+	    getReq.open("GET", "/api/id/" + this.props.params.id);
+	    getReq.send();
+	  },
 	  handleChange: function handleChange(field, event) {
 	    var nextState = {};
 	    nextState[field] = event.target.value;
