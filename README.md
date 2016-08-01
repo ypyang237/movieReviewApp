@@ -8,6 +8,19 @@ Built with Node.js, Express and React, this is a simple movie reviewing applicat
 - Create a new movie review
 - Delete a movie review
 
+### Installation
+
+After you have cloned the repository, please run npm install for dependencies.
+
+```sh
+$ npm install 
+```
+cd into the app, and run it with nodemon. 
+```sh
+$ cd movieReviewApp
+$ nodemon server.js
+```
+
 The endpoints: 
 
 ##### /api 
@@ -38,16 +51,4 @@ DELETE
 > This is to allow the pre-population of the form when navigated to the /edit/{id} route. 
 * also allows to GET by id. 
 
-### Installation
-
-After you have cloned the repository, please run npm install for dependencies.
-
-```sh
-$ npm install 
-```
-cd into the app, and run it with nodemon. 
-```sh
-$ cd movieReviewApp
-$ nodemon server.js
-```
 
