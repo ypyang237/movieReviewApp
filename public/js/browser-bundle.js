@@ -25976,16 +25976,18 @@
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(159);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Edit = _react2.default.createClass({
-	  displayName: "Edit",
+	  displayName: 'Edit',
 	
 	  getInitialState: function getInitialState() {
 	    return {
@@ -26005,7 +26007,9 @@
 	
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.addEventListener("load", function () {
-	      console.log('this', this);
+	      if (JSON.parse(this.response).success === true) {
+	        _reactRouter.browserHistory.push("/");
+	      }
 	    });
 	
 	    xmlhttp.open("PUT", "/api");
@@ -26018,45 +26022,35 @@
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
-	      "div",
-	      { className: "Edit" },
+	      'div',
+	      { className: 'Edit' },
 	      _react2.default.createElement(
-	        "h1",
+	        'h1',
 	        null,
-	        "Edit Movie Review"
+	        'Edit Movie Review'
 	      ),
 	      _react2.default.createElement(
-	        "p",
+	        'p',
 	        null,
-	        "Old Title"
+	        'New Title'
 	      ),
-	      _react2.default.createElement(
-	        "p",
-	        null,
-	        "Old Rating"
-	      ),
-	      _react2.default.createElement(
-	        "p",
-	        null,
-	        "New Title"
-	      ),
-	      _react2.default.createElement("input", {
+	      _react2.default.createElement('input', {
 	        value: this.state.title,
 	        onChange: this.handleChange.bind(this, "title")
 	      }),
 	      _react2.default.createElement(
-	        "p",
+	        'p',
 	        null,
-	        "New Rating"
+	        'New Rating'
 	      ),
-	      _react2.default.createElement("input", {
+	      _react2.default.createElement('input', {
 	        value: this.state.rating,
 	        onChange: this.handleChange.bind(this, "rating")
 	      }),
 	      _react2.default.createElement(
-	        "button",
+	        'button',
 	        { onClick: this.handleSubmit },
-	        "Submit"
+	        'Submit'
 	      )
 	    );
 	  }

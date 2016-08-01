@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
 const Edit = React.createClass({
   getInitialState : function(){
@@ -19,7 +20,9 @@ const Edit = React.createClass({
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.addEventListener("load", function(){
-      console.log('this', this);
+      if(JSON.parse(this.response).success === true){
+        browserHistory.push("/");
+      }
     });
 
     xmlhttp.open("PUT", "/api");
@@ -34,8 +37,6 @@ const Edit = React.createClass({
     return (
       <div className="Edit">
         <h1>Edit Movie Review</h1>
-        <p>Old Title</p>
-        <p>Old Rating</p>
         <p>New Title</p>
         <input
           value={this.state.title}

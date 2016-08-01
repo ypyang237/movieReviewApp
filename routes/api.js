@@ -25,13 +25,12 @@ router.route('/')
   })
 
   .put(function(req, res) {
-
-    console.log('req.body.name', req.body.name);
-    console.log('req.body.id', req.body.id);
-    console.log('req.body.rating', req.body.rating);
-
-    res.send({success : true,
-              method  : 'put'});
+    ReviewFunctions.editReview(req.body.id, req.body.name, req.body.rating, function(reviews){
+      res.send({
+        success : true,
+        reviews : reviews
+      });
+    });
   })
 
   .delete(function(req, res) {
