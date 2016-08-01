@@ -61,7 +61,7 @@ DELETE
 
 > Body parameters to be sent via JSON: E.g.  { id : 2 }
 
->The "Delete Reviews" button, which exists in the /edit/{id} route, will trigger the DELETE functionalty on the server.
+>The "Delete Reviews" button, which exists in the /edit/{id} route, will send the DELETE request to the server.
 
 ##### /api/:query
 GET
