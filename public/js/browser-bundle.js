@@ -25653,25 +25653,37 @@
 /* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(159);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Header = _react2.default.createClass({
-	  displayName: "Header",
+	  displayName: 'Header',
 	
 	  render: function render() {
 	    return _react2.default.createElement(
-	      "div",
-	      { className: "header" },
+	      'div',
+	      { className: 'header' },
 	      _react2.default.createElement(
-	        "h1",
+	        'h1',
 	        null,
-	        "Movie Review App"
+	        'Movie Review App'
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/' },
+	        'Get All Reviews'
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/get' },
+	        'Get Specific Review'
 	      ),
 	      this.props.children
 	    );
@@ -25695,15 +25707,50 @@
 	var GetAll = _react2.default.createClass({
 	  displayName: "GetAll",
 	
+	  getInitialState: function getInitialState() {
+	    return {
+	      reviews: []
+	    };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var that = this;
+	
+	    var getReq = new XMLHttpRequest();
+	    getReq.addEventListener("load", function () {
+	      that.setState({
+	        reviews: JSON.parse(this.response).data
+	      });
+	    });
+	    getReq.open("GET", "/api");
+	    getReq.send();
+	  },
 	  render: function render() {
+	    var reviews = this.state.reviews.map(function (element) {
+	      return _react2.default.createElement(
+	        "div",
+	        { key: element.id },
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          element.name
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          element.rating
+	        )
+	      );
+	    });
+	
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "getall" },
 	      _react2.default.createElement(
 	        "h1",
 	        null,
-	        "GetAll"
-	      )
+	        "All Reviews"
+	      ),
+	      reviews
 	    );
 	  }
 	});
