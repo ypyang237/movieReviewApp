@@ -26109,7 +26109,7 @@
 	      _react2.default.createElement(
 	        'button',
 	        { onClick: this.handleEdit },
-	        'Edit Review'
+	        'Save Changes'
 	      ),
 	      _react2.default.createElement(
 	        'button',

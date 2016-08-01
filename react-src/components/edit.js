@@ -80,7 +80,7 @@ const Edit = React.createClass({
           onChange={this.handleChange.bind(this, "rating")}
         />
         <button onClick={this.handleEdit}>
-          Edit Review
+          Save Changes
         </button>
         <button onClick={this.handleDelete}>
           Delete Review
