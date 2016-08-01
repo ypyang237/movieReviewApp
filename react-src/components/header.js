@@ -8,6 +8,7 @@ const Header = React.createClass({
         <h1>Movie Review App</h1>
         <Link to="/">Get All Reviews</Link>
         <Link to="/get">Get Specific Review</Link>
+        <Link to="/add">Add a Review</Link>
         {this.props.children}
       </div>
     )

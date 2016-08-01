@@ -61,6 +61,7 @@
 	var Header = __webpack_require__(222),
 	    GetAll = __webpack_require__(223),
 	    Get = __webpack_require__(224),
+	    Add = __webpack_require__(226),
 	    NotFound = __webpack_require__(225);
 	
 	_reactDom2.default.render(_react2.default.createElement(
@@ -71,6 +72,7 @@
 	    { path: '/', component: Header },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: GetAll }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'get', component: Get }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'add', component: Add }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: NotFound })
 	  )
 	), document.getElementById('content'));
@@ -25685,6 +25687,11 @@
 	        { to: '/get' },
 	        'Get Specific Review'
 	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/add' },
+	        'Add a Review'
+	      ),
 	      this.props.children
 	    );
 	  }
@@ -25816,6 +25823,36 @@
 	});
 	
 	module.exports = NotFound;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Add = _react2.default.createClass({
+	  displayName: "Add",
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "add" },
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "Add"
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Add;
 
 /***/ }
 /******/ ]);
