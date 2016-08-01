@@ -16,8 +16,12 @@ router.route('/')
   })
 
   .post(function(req, res) {
-    res.send({success : true,
-              method  : 'post'});
+    ReviewFunctions.addReview(req.body.name, req.body.rating, function(reviews){
+      res.send({
+        success : true,
+        reviews : reviews
+      });
+    });
   })
 
   .put(function(req, res) {

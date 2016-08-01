@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router';
 
 const Header   = require('./components/header'),
       GetAll   = require('./components/getall'),

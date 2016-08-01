@@ -61,8 +61,8 @@
 	var Header = __webpack_require__(222),
 	    GetAll = __webpack_require__(223),
 	    Get = __webpack_require__(224),
-	    Add = __webpack_require__(226),
-	    NotFound = __webpack_require__(225);
+	    Add = __webpack_require__(225),
+	    NotFound = __webpack_require__(226);
 	
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
@@ -25798,6 +25798,100 @@
 /* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(159);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Add = _react2.default.createClass({
+	  displayName: 'Add',
+	
+	  getInitialState: function getInitialState() {
+	    return {
+	      title: "",
+	      rating: ""
+	    };
+	  },
+	
+	  handleChange: function handleChange(field, event) {
+	    var nextState = {};
+	    nextState[field] = event.target.value;
+	
+	    this.setState(nextState);
+	  },
+	
+	  handleSubmit: function handleSubmit() {
+	    var that = this;
+	
+	    var xmlhttp = new XMLHttpRequest();
+	    xmlhttp.addEventListener("load", function () {
+	      var response = JSON.parse(this.response);
+	
+	      _reactRouter.browserHistory.push("/");
+	    });
+	
+	    xmlhttp.open("POST", "/api");
+	    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	    xmlhttp.send(JSON.stringify({
+	      name: this.state.title,
+	      rating: this.state.rating
+	    }));
+	  },
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'add' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'Add'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'addContent' },
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Movie Title'
+	        ),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          value: this.state.title,
+	          onChange: this.handleChange.bind(this, "title")
+	        }),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Rating'
+	        ),
+	        _react2.default.createElement('input', {
+	          type: 'integer',
+	          value: this.state.rating,
+	          onChange: this.handleChange.bind(this, "rating")
+	        }),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.handleSubmit },
+	          'Submit'
+	        ),
+	        _react2.default.createElement('br', null)
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Add;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 	
 	var _react = __webpack_require__(1);
@@ -25823,36 +25917,6 @@
 	});
 	
 	module.exports = NotFound;
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Add = _react2.default.createClass({
-	  displayName: "Add",
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "add" },
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        "Add"
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = Add;
 
 /***/ }
 /******/ ]);
