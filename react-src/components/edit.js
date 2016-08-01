@@ -15,7 +15,7 @@ const Edit = React.createClass({
 
     this.setState(nextState);
   },
-  handleSubmit : function(){
+  handleEdit : function(){
     var that = this;
 
     var xmlhttp = new XMLHttpRequest();
@@ -33,6 +33,22 @@ const Edit = React.createClass({
       rating: this.state.rating
     }))
   },
+  handleDelete : function(){
+    var that = this;
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.addEventListener("load", function(){
+      if(JSON.parse(this.response).success === true){
+        browserHistory.push("/");
+      }
+    });
+
+    xmlhttp.open("DELETE", "/api");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify({
+      id : this.state.id
+    }))
+  },
   render : function(){
     return (
       <div className="Edit">
@@ -47,8 +63,11 @@ const Edit = React.createClass({
           value={this.state.rating}
           onChange={this.handleChange.bind(this, "rating")}
         />
-        <button onClick={this.handleSubmit}>
-          Submit
+        <button onClick={this.handleEdit}>
+          Edit Review
+        </button>
+        <button onClick={this.handleDelete}>
+          Delete Review
         </button>
       </div>
     )

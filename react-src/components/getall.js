@@ -26,13 +26,17 @@ const GetAll = React.createClass({
     var that = this;
 
     var reviews = this.state.reviews.map(function(element){
-      return (
-        <div key={element.id}>
-          <p>{element.name}</p>
-          <p>{element.rating}</p>
-          <button onClick={that.redirect.bind(that, element.id)}>Edit</button>
-        </div>
-      )
+
+      if(element){
+        return (
+          <div key={element.id}>
+            <p>{element.name}</p>
+            <p>{element.rating}</p>
+            <button onClick={that.redirect.bind(that, element.id)}>Edit</button>
+          </div>
+        )
+      }
+
     })
 
     return (

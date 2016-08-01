@@ -25742,25 +25742,28 @@
 	    var that = this;
 	
 	    var reviews = this.state.reviews.map(function (element) {
-	      return _react2.default.createElement(
-	        'div',
-	        { key: element.id },
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          element.name
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          element.rating
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: that.redirect.bind(that, element.id) },
-	          'Edit'
-	        )
-	      );
+	
+	      if (element) {
+	        return _react2.default.createElement(
+	          'div',
+	          { key: element.id },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            element.name
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            element.rating
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: that.redirect.bind(that, element.id) },
+	            'Edit'
+	          )
+	        );
+	      }
 	    });
 	
 	    return _react2.default.createElement(
@@ -26014,7 +26017,7 @@
 	
 	    this.setState(nextState);
 	  },
-	  handleSubmit: function handleSubmit() {
+	  handleEdit: function handleEdit() {
 	    var that = this;
 	
 	    var xmlhttp = new XMLHttpRequest();
@@ -26030,6 +26033,22 @@
 	      id: this.state.id,
 	      name: this.state.title,
 	      rating: this.state.rating
+	    }));
+	  },
+	  handleDelete: function handleDelete() {
+	    var that = this;
+	
+	    var xmlhttp = new XMLHttpRequest();
+	    xmlhttp.addEventListener("load", function () {
+	      if (JSON.parse(this.response).success === true) {
+	        _reactRouter.browserHistory.push("/");
+	      }
+	    });
+	
+	    xmlhttp.open("DELETE", "/api");
+	    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	    xmlhttp.send(JSON.stringify({
+	      id: this.state.id
 	    }));
 	  },
 	  render: function render() {
@@ -26061,8 +26080,13 @@
 	      }),
 	      _react2.default.createElement(
 	        'button',
-	        { onClick: this.handleSubmit },
-	        'Submit'
+	        { onClick: this.handleEdit },
+	        'Edit Review'
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { onClick: this.handleDelete },
+	        'Delete Review'
 	      )
 	    );
 	  }

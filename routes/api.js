@@ -34,8 +34,14 @@ router.route('/')
   })
 
   .delete(function(req, res) {
-    res.send({success : true,
-              method  : 'delete'});
+    ReviewFunctions.deleteReview(req.body.id, function(reviews){
+      res.send({
+        success : true,
+        reviews  : reviews
+      });
+    });
+
+
   });
 
 router.route('/:query')
