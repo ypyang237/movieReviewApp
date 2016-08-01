@@ -16,8 +16,6 @@ const Edit = React.createClass({
     getReq.addEventListener("load", function(){
       var result = JSON.parse(this.response).result;
 
-      console.log('result', JSON.parse(this.response));
-
       that.setState({
         title : result[0].name,
         rating : result[0].rating

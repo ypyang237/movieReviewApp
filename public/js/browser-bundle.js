@@ -25785,16 +25785,18 @@
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(159);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Get = _react2.default.createClass({
-	  displayName: "Get",
+	  displayName: 'Get',
 	
 	  getInitialState: function getInitialState() {
 	    return {
@@ -25818,41 +25820,52 @@
 	    getReq.open("GET", "/api/" + event.target.value);
 	    getReq.send();
 	  },
+	
+	  redirect: function redirect(id) {
+	    _reactRouter.browserHistory.push("/edit/" + id);
+	  },
 	  render: function render() {
 	    var results = null;
+	    var that = this;
+	
 	    if (this.state.results && this.state.results.length > 0) {
 	      results = this.state.results.map(function (element) {
 	        return _react2.default.createElement(
-	          "div",
+	          'div',
 	          { key: element.id },
 	          _react2.default.createElement(
-	            "p",
+	            'p',
 	            null,
 	            element.name
 	          ),
 	          _react2.default.createElement(
-	            "p",
+	            'p',
 	            null,
 	            element.rating
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: that.redirect.bind(that, element.id) },
+	            'Edit Review'
 	          )
 	        );
 	      });
 	    }
 	
 	    return _react2.default.createElement(
-	      "div",
-	      { className: "get" },
+	      'div',
+	      { className: 'get' },
 	      _react2.default.createElement(
-	        "h1",
+	        'h1',
 	        null,
-	        "Review Search"
+	        'Review Search'
 	      ),
 	      _react2.default.createElement(
-	        "p",
+	        'p',
 	        null,
-	        "Search movie by name"
+	        'Search movie by name'
 	      ),
-	      _react2.default.createElement("input", {
+	      _react2.default.createElement('input', {
 	        value: this.state.query,
 	        onChange: this.handleChange
 	      }),
@@ -26017,8 +26030,6 @@
 	    var getReq = new XMLHttpRequest();
 	    getReq.addEventListener("load", function () {
 	      var result = JSON.parse(this.response).result;
-	
-	      console.log('result', JSON.parse(this.response));
 	
 	      that.setState({
 	        title: result[0].name,
