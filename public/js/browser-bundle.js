@@ -25687,7 +25687,7 @@
 	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/get' },
-	        'Get Specific Review'
+	        'Search Reviews'
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
@@ -25845,7 +25845,7 @@
 	      _react2.default.createElement(
 	        "h1",
 	        null,
-	        "Get"
+	        "Review Search"
 	      ),
 	      _react2.default.createElement(
 	        "p",

@@ -38,7 +38,7 @@ const Get = React.createClass({
 
     return (
       <div className="get">
-        <h1>Get</h1>
+        <h1>Review Search</h1>
         <p>Search movie by name</p>
         <input
           value={this.state.query}
