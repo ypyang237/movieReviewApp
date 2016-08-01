@@ -25794,16 +25794,34 @@
 	
 	    var getReq = new XMLHttpRequest();
 	    getReq.addEventListener("load", function () {
-	      console.log('this', this);
-	
-	      // that.setState({
-	      //   results : JSON.parse(this.response).results
-	      // })
+	      that.setState({
+	        results: JSON.parse(this.response).results
+	      });
 	    });
 	    getReq.open("GET", "/api/" + event.target.value);
 	    getReq.send();
 	  },
 	  render: function render() {
+	    var results = null;
+	    if (this.state.results && this.state.results.length > 0) {
+	      results = this.state.results.map(function (element) {
+	        return _react2.default.createElement(
+	          "div",
+	          { key: element.id },
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            element.name
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            element.rating
+	          )
+	        );
+	      });
+	    }
+	
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "get" },
@@ -25820,7 +25838,8 @@
 	      _react2.default.createElement("input", {
 	        value: this.state.query,
 	        onChange: this.handleChange
-	      })
+	      }),
+	      results
 	    );
 	  }
 	});
