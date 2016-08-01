@@ -18,37 +18,51 @@ $ npm install
 cd into the app, and run it with nodemon. 
 ```sh
 $ cd movieReviewApp
-$ nodemon server.js
+$ node server.js
 ```
+To view the front end ReactJS application, open localhost:3000 in your browser.
 
 The endpoints: 
 
 ##### /api 
 
 GET
-> GET gets all the reviews. 
-> The [Get All Reviews] link, prompts GET to respond with all reviews and displays them with the option to edit. 
+> GET gets all the reviews.
+> The [Get All Reviews] link on the front end, prompts GET to respond with all reviews and displays them with the option to edit. 
 
 POST
-> POST adds a review. 
+> POST adds a review.
+> Header : Content-Type : Application/JSON
+> Body parameters to be sent via JSON: E.g. { name : "Tarzan", rating : 7.2 }
 
 > The [Add a Review] link, prompts POST to respond by creating a new movie review, specifying the title and rating of the movie. 
 
 PUT
-> PUT edits a review. 
+> PUT edits a review, selected by id
+> Header : Content-Type : Application/JSON
+> Body parameters to be sent via JSON: E.g.  { id : 1, name : "Tarzan" , rating : 6.8 }
 
 > After getting either one or all reviews, the Edit button next to each review will redirect to the edit form with pre-populated values. Upon clicking the "Save Changes" button, the state is refreshed and the values are stored in the server. 
 
 DELETE
 > DELETE removes a review by it's id. 
+> Header : Content-Type : Application/JSON
+> Body parameters to be sent via JSON: E.g.  { id : 2 }
 
 >The "Delete Reviews" button, which exists in the /edit/{id} route, will trigger the DELETE functionalty on the server.
 
-##### /:query
-> The [Search Reviews] link prompts GET to respond with the review closest to what is being searched in the input bar. 
+##### /api/:query
+GET
+> Finds reviews, filtered by indexOf matching name.
+> E.g. searching "Ta" would return Tarzan as well as Avatar if exists
+
+> The [Search Reviews] link prompts the front end to send a GET request to the server which will respond with the reviews with names matching the query being searched in the input bar. 
 
 ##### /id/:id
-> This is to allow the pre-population of the form when navigated to the /edit/{id} route. 
-* also allows to GET by id. 
+GET
+> Finds one review based on unique matching index.
+> E.g. searching id = 1 will return the respective review based on index.
+
+> On the front end, this is used to allow the pre-population of the form in the [Search Reviews] component when navigated to the /edit/{id} route. 
 
 
