@@ -20,7 +20,9 @@ POST
 > The [Add a Review] link, prompts POST to respond by creating a new movie review, specifying the title and rating of the movie. 
 
 PUT
-> PUT edits a review. After getting either one or all reviews, the Edit button next to each review will redirect to the edit form with pre-populated values. Upon clicking the "Save Changes" button, the state is refreshed and the values stored in the server updated. 
+> PUT edits a review. 
+
+After getting either one or all reviews, the Edit button next to each review will redirect to the edit form with pre-populated values. Upon clicking the "Save Changes" button, the state is refreshed and the values stored in the server updated. 
 
 DELETE
 > DELETE removes a review by it's id. The "Delete Reviews" button, which exists in the /edit/{id} route, will trigger the DELETE functionalty on the server.
