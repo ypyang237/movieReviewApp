@@ -34,6 +34,13 @@ router.route('/')
               method  : 'delete'});
   });
 
-
+router.route('/:query')
+  .get(function(req, res){
+    ReviewFunctions.search(req.params.query, function(results){
+      res.send({
+        results : results
+      });
+    });
+  });
 
 module.exports = router;

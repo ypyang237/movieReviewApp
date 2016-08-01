@@ -25779,6 +25779,30 @@
 	var Get = _react2.default.createClass({
 	  displayName: "Get",
 	
+	  getInitialState: function getInitialState() {
+	    return {
+	      query: "",
+	      results: []
+	    };
+	  },
+	  handleChange: function handleChange(event) {
+	    this.setState({
+	      query: event.target.value
+	    });
+	
+	    var that = this;
+	
+	    var getReq = new XMLHttpRequest();
+	    getReq.addEventListener("load", function () {
+	      console.log('this', this);
+	
+	      // that.setState({
+	      //   results : JSON.parse(this.response).results
+	      // })
+	    });
+	    getReq.open("GET", "/api/" + event.target.value);
+	    getReq.send();
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "div",
@@ -25787,7 +25811,16 @@
 	        "h1",
 	        null,
 	        "Get"
-	      )
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "Search movie by name"
+	      ),
+	      _react2.default.createElement("input", {
+	        value: this.state.query,
+	        onChange: this.handleChange
+	      })
 	    );
 	  }
 	});
