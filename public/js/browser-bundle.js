@@ -25705,16 +25705,18 @@
 /* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(159);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var GetAll = _react2.default.createClass({
-	  displayName: "GetAll",
+	  displayName: 'GetAll',
 	
 	  getInitialState: function getInitialState() {
 	    return {
@@ -25733,31 +25735,41 @@
 	    getReq.open("GET", "/api");
 	    getReq.send();
 	  },
+	  redirect: function redirect(id) {
+	    _reactRouter.browserHistory.push("/edit/" + id);
+	  },
 	  render: function render() {
+	    var that = this;
+	
 	    var reviews = this.state.reviews.map(function (element) {
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        { key: element.id },
 	        _react2.default.createElement(
-	          "p",
+	          'p',
 	          null,
 	          element.name
 	        ),
 	        _react2.default.createElement(
-	          "p",
+	          'p',
 	          null,
 	          element.rating
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: that.redirect.bind(that, element.id) },
+	          'Edit'
 	        )
 	      );
 	    });
 	
 	    return _react2.default.createElement(
-	      "div",
-	      { className: "getall" },
+	      'div',
+	      { className: 'getall' },
 	      _react2.default.createElement(
-	        "h1",
+	        'h1',
 	        null,
-	        "All Reviews"
+	        'All Reviews'
 	      ),
 	      reviews
 	    );
