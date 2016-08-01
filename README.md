@@ -8,7 +8,8 @@ Built with Node.js, Express and React, this is a simple movie reviewing applicat
 - Create a new movie review
 - Delete a movie review
 
-* Data is currently stored in memory on the server, future developments will establish a mongoDB database for persisting data. 
+
+ Data is currently stored in memory on the server, future developments will establish a mongoDB database for persisting data. 
 
 ### Installation
 
